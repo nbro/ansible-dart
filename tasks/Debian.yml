@@ -1,0 +1,23 @@
+---
+# Enable HTTPS for apt.
+- apt: name={{item}} state=present
+  with_items:
+    - apt-transport-https
+
+# Get the Google Linux package signing key.
+- apt_key: url={{dart_signing_key_url}} state=present
+
+# Set up the location of the stable repository.
+
+- name: download dart source list
+  get_url: url={{dart_source_list_url}} dest={{dart_source_list_path}} mode=0644
+
+# Set up for the dev channel
+# Before running this command, follow the instructions in
+# "Set up for the stable channel".
+#$ sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_unstable.list > /etc/apt/sources.list.d/dart_unstable.list'
+
+- apt: name={{item}} update_cache=yes state=present
+  with_items:
+    - "{{dart_package}}"
+
