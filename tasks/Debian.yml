@@ -21,3 +21,5 @@
   with_items:
     - "{{dart_package}}"
 
+- name: Add dart and tools to PATH
+  template: src=dart.sh.j2 dest=/etc/profile.d/dart.sh owner=root group=root mode=0655

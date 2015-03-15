@@ -4,11 +4,5 @@
 - include: Debian.yml
   when: ansible_os_family == "Debian"
 
-- name: Create Dartium directory
-  file: path={{dartium_path}} state=directory
-
-- name: Download Dartium
-  get_url: url={{dartium_url}} dest={{dartium_path}}/{{dartium_archive_name}}.zip mode=0644
-
-- name: Unarchive Dartium archive
-  unarchive: src={{dartium_path}}/{{dartium_archive_name}}.zip dest={{dartium_path}} copy=no
+- include: dartium.yml
+  when: dartium_include
