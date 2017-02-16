@@ -23,7 +23,7 @@ Example Playbook
 
     - hosts: all
       roles:
-        - { role: jgrowl.dart, when: ansible_os_family == "Debian", sudo: True }
+        - { role: jgrowl.dart, when: ansible_os_family == "Debian", become: yes }
 
 License
 -------
