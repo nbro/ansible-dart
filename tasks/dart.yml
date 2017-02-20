@@ -1,4 +1,5 @@
 ---
+
 # Enable HTTPS for apt.
 - apt: name={{item}} state=present
   with_items:
@@ -10,7 +11,7 @@
 
 # Set up the location of the stable repository.
 
-- name: download dart source list
+- name: download Dart source list
   get_url: url={{dart_source_list_url}} dest={{dart_source_list_path}} mode=0644
 
 # Set up for the dev channel
@@ -22,5 +23,11 @@
   with_items:
     - "{{dart_package}}"
 
-- name: Add dart and tools to PATH
+- name: add Dart and tools to PATH
   template: src=dart.sh.j2 dest=/etc/profile.d/dart.sh owner=root group=root mode=0655
+
+# Based on answers to: http://stackoverflow.com/questions/42195653/install-darts-package-using-ansible
+- name: "add .pub-cache to PATH"
+  lineinfile:
+    dest: /home/vagrant/.profile
+    line: 'PATH=$PATH:/home/vagrant/.pub-cache/bin'

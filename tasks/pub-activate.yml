@@ -1,0 +1,6 @@
+---
+
+# Based on answers to: http://stackoverflow.com/questions/42195653/install-darts-package-using-ansible
+
+- name: activate Dart's package 'stagehand'
+  shell: bash -lc "pub global activate stagehand"
