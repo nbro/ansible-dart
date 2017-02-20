@@ -27,7 +27,7 @@
   template: src=dart.sh.j2 dest=/etc/profile.d/dart.sh owner=root group=root mode=0655
 
 # Based on answers to: http://stackoverflow.com/questions/42195653/install-darts-package-using-ansible
-- name: "add .pub-cache to PATH"
-  lineinfile:
-    dest: /home/vagrant/.profile
-    line: 'PATH=$PATH:/home/vagrant/.pub-cache/bin'
+# - name: "add .pub-cache to PATH"
+#   lineinfile:
+#     dest: /home/vagrant/.profile
+#     line: 'PATH=$PATH:/home/vagrant/.pub-cache/bin'
